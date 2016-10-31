@@ -3,15 +3,22 @@ install:
   - bundle install
   - gem install ocra
 
-build: off
-
-before_test:
+before_build:
   - ruby -v
   - gem -v
   - bundle -v
-
-test_script:
   - bundle exec ruby main.rb
+
+build:
   - ocra --verbose --gemfile %APPVEYOR_BUILD_FOLDER%\Gemfile main.rb
   - main.exe
 
+before_package:
+  - type nul > %APPVEYOR_REPO_COMMIT%.commit
+
+after_build:
+  - 7z a windows.%APPVEYOR_REPO_BRANCH%.zip %APPVEYOR_BUILD_FOLDER%\*.exe %APPVEYOR_REPO_COMMIT%.commit
+
+artifacts:
+- path: windows.*.zip
+  name: x86 binary
