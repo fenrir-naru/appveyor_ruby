@@ -13,10 +13,8 @@ build_script:
   - ocra --verbose --gemfile %APPVEYOR_BUILD_FOLDER%\Gemfile main.rb
   - main.exe
 
-before_package:
-  - type nul > %APPVEYOR_REPO_COMMIT%.commit
-
 after_build:
+  - type nul > %APPVEYOR_REPO_COMMIT%.commit
   - 7z a windows.%APPVEYOR_REPO_BRANCH%.zip %APPVEYOR_BUILD_FOLDER%\*.exe %APPVEYOR_REPO_COMMIT%.commit
 
 artifacts:
