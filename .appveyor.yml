@@ -1,9 +1,5 @@
-cache:
-  #- vendor/bundle
-
 install:
   - set PATH=C:\Ruby21\bin;%PATH%
-  - bundle config --local path vendor/bundle
   - bundle install
   - gem install ocra
 
@@ -16,5 +12,6 @@ before_test:
 
 test_script:
   - bundle exec ruby main.rb
-  #- ocra --verbose --gemfile %APPVEYOR_BUILD_FOLDER%\Gemfile main.rb
-  - ocra --verbose main.rb
+  - ocra --verbose --gemfile %APPVEYOR_BUILD_FOLDER%\Gemfile main.rb
+  - main.exe
+
