@@ -2,7 +2,7 @@ cache:
   - vendor/bundle
 
 install:
-  - set PATH=C:\Ruby22\bin;%PATH%
+  - set PATH=C:\Ruby21\bin;%PATH%
   - bundle config --local path vendor/bundle
   - bundle install
 
@@ -15,3 +15,4 @@ before_test:
 
 test_script:
   - bundle exec ruby main.rb
+  - bundle exec ocra --verbose --gemfile main.rb
