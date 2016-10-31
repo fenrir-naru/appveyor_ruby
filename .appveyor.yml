@@ -1,5 +1,5 @@
 cache:
-  - vendor/bundle
+  #- vendor/bundle
 
 install:
   - set PATH=C:\Ruby21\bin;%PATH%
