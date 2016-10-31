@@ -7,9 +7,9 @@ before_build:
   - ruby -v
   - gem -v
   - bundle -v
-  - bundle exec ruby main.rb
 
-build:
+build_script:
+  - bundle exec ruby main.rb
   - ocra --verbose --gemfile %APPVEYOR_BUILD_FOLDER%\Gemfile main.rb
   - main.exe
 
